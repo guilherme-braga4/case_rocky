@@ -18,6 +18,8 @@ Teste realizado para o processo seletivo Rocky Monks, pelo Desenvolvedor Guilher
  ✔️ 5-quantidadeEstoque: para Somar as quantidades de cada em produto em estoque, de acordo com a sua categoria: "Panelas -> Eletrodomésticos -> Eletrônicos -> Acessórios", primeiramente foi realizada a iteração através do map, e ao encontrar a categoria desejada (através da condição verdadeira), então essas propriedades "item.quantity" eram colocadas em um array vazio, através do método Puss, para utilizar esse array posteriormente na soma das quantidades dessa categoria, através do método reduce.
     Para questões de organização, foi criado um array de objetos vazio, e criado uma propriedade para cada soma de categoria respectiva. Portanto, foi atribuido ao retorno da função de callback do map desse array de objetos citado anteriorimente, o resultado do reduce para a propriedade que representa essa categoria.
     No fim, é retornado um array de objetos ("somaObject") contendo todas as somas das quantidades de cada respectiva categoria.
+    
+   ✔️ 6-salvarDados: Serializando o objeto jsonData em string, e então exportando para saida.json.
   
 𝗘𝘀𝗰𝗼𝗹𝗵𝗮 𝗱𝗮 𝗹𝗶𝗻𝗴𝘂𝗮𝗴𝗲𝗺:
 
