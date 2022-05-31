@@ -1,14 +1,6 @@
+var fs = require('fs');
 //1 - Carregando o arquivo JSON com os dados corrompidos
 let jsonData = require('./index.json'); 
-
-
-//objeto para substituir as letras "erradas"
-let letrasSubstituidas = {
-  'æ':'a',
-  '¢':'c',
-  'ø':'o',
-  'ß':'b',
-};
 
 
 //1 - Corrigindo os preços: transformando tipos String em Number
@@ -23,6 +15,14 @@ function corrigirPreco () {
 
 corrigirPreco()
 
+
+//objeto para substituir as letras "erradas"
+let letrasSubstituidas = {
+  'æ':'a',
+  '¢':'c',
+  'ø':'o',
+  'ß':'b',
+};
 
 //2 - Corrigindo os nomes: m = letra sendo iterada
 //                         [æ¢øß] -> quando qualquer uma dessas letras for iterada, será substituida de acordo com a representação dela no objeto "letrasSubstituidas"
@@ -105,7 +105,7 @@ function quantidadeEstoque () {
     //copiando a nova quantidade dessa categoria para dentro do Objeto que armazena todas as quantidades no estoque
     somaObject.map((props) => {
       return(
-        [props.quantidadePanelas = arr.reduce((prev, curr) => prev + curr, 0)]
+        props.quantidadePanelas = arr.reduce((prev, curr) => prev + curr, 0)
         )
     })
    }
@@ -114,7 +114,7 @@ function quantidadeEstoque () {
       arr2.push(item.quantity),
       somaObject.map((props) => {
         return(
-          [props.quantidadeEletrodomesticos = arr2.reduce((prev, curr) => prev + curr, 0)]
+          props.quantidadeEletrodomesticos = arr2.reduce((prev, curr) => prev + curr, 0)
           )
       })
     )
@@ -124,7 +124,7 @@ function quantidadeEstoque () {
       arr3.push(item.quantity),
       somaObject.map((props) => {
         return(
-          [props.quantidadeEletronicos = arr3.reduce((prev, curr) => prev + curr, 0)]
+          props.quantidadeEletronicos = arr3.reduce((prev, curr) => prev + curr, 0)
           )
       })
     )
@@ -134,7 +134,7 @@ function quantidadeEstoque () {
       arr4.push(item.quantity),
       somaObject.map((props) => {
         return(
-          [props.quantidadeAcessorios = arr4.reduce((prev, curr) => prev + curr, 0)]
+          props.quantidadeAcessorios = arr4.reduce((prev, curr) => prev + curr, 0)
           )
       })
     )
@@ -148,5 +148,13 @@ console.log("somaObject", somaObject)
 console.log("jsonData", jsonData)
 
 
+// 6- serializando o objeto jsonData em string, e então exportando para saida.json
+//referência: https://stackabuse.com/reading-and-writing-json-files-with-node-js/
 
+ function salvarDados (dados) {
+  const exportJson = JSON.stringify(dados, null, 2); 
+  fs.writeFileSync('saida.json', exportJson);
+}
+
+salvarDados(jsonData)
 
